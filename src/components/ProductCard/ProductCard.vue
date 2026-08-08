@@ -206,6 +206,16 @@ const stars = computed(() => {
   font-weight: var(--fw-medium);
 }
 
+@media (max-width: 768px) {
+  .product-card__brand {
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+}
+
 .product-card__title {
   font-size: var(--fs-card-title);
   font-weight: var(--fw-semibold);
