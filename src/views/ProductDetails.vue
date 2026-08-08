@@ -258,6 +258,12 @@ const estimatedDelivery = computed(() => {
   border-radius: var(--radius-pill);
 }
 
+@media (max-width: 768px) {
+  .product-details__stock {
+    padding: 6px;
+  }
+}
+
 .product-details__stock::before {
   content: '';
   width: 8px;
