@@ -138,7 +138,7 @@ const estimatedDelivery = computed(() => {
             <span v-if="product.discount" class="product-details__discount">-{{ product.discount }}%</span>
           </div>
 
-          <span class="product-details__stock">Estimated delivery: {{ estimatedDelivery }}</span>
+          <span class="product-details__stock">USPS | Estimated delivery: {{ estimatedDelivery }}</span>
 
           <p class="product-details__description">{{ product.description }}</p>
 
