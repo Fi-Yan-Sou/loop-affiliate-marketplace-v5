@@ -10,14 +10,43 @@
 
 const img = (seed, n) => `https://picsum.photos/seed/${seed}-${n}/900/900`
 
+// Real product images for Products 1-6 (temporary data/image replacement test).
+// Sourced from src/assets/products/product-<id>/, in filename order (01, 02, 03...).
+import p1Img1 from '../assets/products/product-1/01.jpeg'
+import p1Img2 from '../assets/products/product-1/02.jpeg'
+import p1Img3 from '../assets/products/product-1/03.jpeg'
+
+import p2Img1 from '../assets/products/product-2/01.jpeg'
+import p2Img2 from '../assets/products/product-2/02.jpeg'
+import p2Img3 from '../assets/products/product-2/03.jpeg'
+import p2Img4 from '../assets/products/product-2/04.jpeg'
+
+import p3Img1 from '../assets/products/product-3/01.jpeg'
+import p3Img2 from '../assets/products/product-3/02.jpeg'
+import p3Img3 from '../assets/products/product-3/03.jpeg'
+import p3Img4 from '../assets/products/product-3/04.jpeg'
+
+import p4Img1 from '../assets/products/product-4/01.jpeg'
+import p4Img2 from '../assets/products/product-4/02.jpeg'
+import p4Img3 from '../assets/products/product-4/03.jpeg'
+
+import p5Img1 from '../assets/products/product-5/01.jpeg'
+import p5Img2 from '../assets/products/product-5/02.jpeg'
+import p5Img3 from '../assets/products/product-5/03.jpeg'
+
+import p6Img1 from '../assets/products/product-6/01.jpeg'
+import p6Img2 from '../assets/products/product-6/02.jpeg'
+import p6Img3 from '../assets/products/product-6/03.jpeg'
+import p6Img4 from '../assets/products/product-6/04.jpeg'
+
 export const products = [
   {
     id: 1,
-    title: "Air Essentials Pullover Hoodie",
-    brand: "Nike",
-    category: "hoodies",
-    gender: "men",
-    description: "A heavyweight cotton-blend hoodie with a relaxed fit, ribbed cuffs, and a soft brushed-fleece interior. Finished with an embroidered logo on the chest.",
+    title: "Prada Woven Straw Wide-Brim Boater Hat",
+    brand: "Prada",
+    category: "hats",
+    gender: "women",
+    description: "A wide-brim boater-style hat woven from natural straw, finished with a slim black leather band, a gold-tone buckle, and the signature Prada triangle logo plate at the front.",
     currentPrice: 54.99,
     oldPrice: 74.99,
     discount: 27,
@@ -29,64 +58,36 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('hoodie-nike', 1),
-      img('hoodie-nike', 2),
-      img('hoodie-nike', 3),
-      img('hoodie-nike', 4)
+      p1Img1,
+      p1Img2,
+      p1Img3
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "Black",
-        code: "#111827",
-        sku: "N-HOO-1-BLACK",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "N-HOO-1-BLACK-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-black-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-black-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "N-HOO-1-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-black-m"
-          }
-        ]
+        name: "S",
+        code: "S",
+        sku: "N-HOO-1-BLACK-S",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-black-s",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-black-s"
       },
       {
-        name: "Gray",
-        code: "#9CA3AF",
-        sku: "N-HOO-1-GRAY",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "N-HOO-1-GRAY-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-gray-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-gray-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "N-HOO-1-GRAY-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-gray-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-gray-m"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "N-HOO-1-BLACK-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-nike-hoodie-001-black-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-nike-hoodie-001-black-m"
       }
     ],
     bestSeller: true
   },
   {
     id: 2,
-    title: "Classic Straight Fit Denim Jeans",
-    brand: "Levi's",
-    category: "pants",
+    title: "Prada Washed Denim Bucket Hat",
+    brand: "Prada",
+    category: "hats",
     gender: "men",
-    description: "Timeless straight-leg denim crafted from durable cotton denim with a classic five-pocket layout and a mid-rise waist.",
+    description: "A relaxed bucket hat crafted from washed denim with contrast stitching and a soft crown, finished with the Prada triangle logo plate above the brim.",
     currentPrice: 42,
     oldPrice: 60,
     discount: 30,
@@ -98,64 +99,37 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('jeans-levis', 1),
-      img('jeans-levis', 2),
-      img('jeans-levis', 3),
-      img('jeans-levis', 4)
+      p2Img1,
+      p2Img2,
+      p2Img3,
+      p2Img4
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "Blue",
-        code: "#0064D2",
-        sku: "L-PAN-2-BLUE",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "L-PAN-2-BLUE-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-blue-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-blue-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "L-PAN-2-BLUE-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-blue-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-blue-m"
-          }
-        ]
+        name: "S",
+        code: "S",
+        sku: "L-PAN-2-BLUE-S",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-blue-s",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-blue-s"
       },
       {
-        name: "Black",
-        code: "#111827",
-        sku: "L-PAN-2-BLACK",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "L-PAN-2-BLACK-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-black-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-black-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "L-PAN-2-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-black-m"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "L-PAN-2-BLUE-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-levis-jeans-002-blue-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-levis-jeans-002-blue-m"
       }
     ],
     bestSeller: true
   },
   {
     id: 3,
-    title: "Everyday Crewneck T-Shirt",
-    brand: "Champion",
-    category: "t-shirts",
-    gender: "men",
-    description: "A soft, breathable crewneck tee in premium combed cotton. Pre-shrunk for a lasting fit and finished with a taped neckline.",
+    title: "Gucci Pink GG Monogram Bikini Set",
+    brand: "Gucci",
+    category: "swimwear",
+    gender: "women",
+    description: "A two-piece bikini in pink GG monogram jacquard fabric, featuring adjustable tie straps and a signature gold interlocking-G hardware detail at the center front.",
     currentPrice: 18.5,
     oldPrice: 25,
     discount: 26,
@@ -167,64 +141,37 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('tee-champion', 1),
-      img('tee-champion', 2),
-      img('tee-champion', 3),
-      img('tee-champion', 4)
+      p3Img1,
+      p3Img2,
+      p3Img3,
+      p3Img4
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "White",
-        code: "#FFFFFF",
-        sku: "C-T-S-3-WHITE",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "C-T-S-3-WHITE-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-white-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-white-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "C-T-S-3-WHITE-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-white-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-white-m"
-          }
-        ]
+        name: "S",
+        code: "S",
+        sku: "C-T-S-3-WHITE-S",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-white-s",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-white-s"
       },
       {
-        name: "Black",
-        code: "#111827",
-        sku: "C-T-S-3-BLACK",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "C-T-S-3-BLACK-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-black-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-black-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "C-T-S-3-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-black-m"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "C-T-S-3-WHITE-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-champion-tee-003-white-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-champion-tee-003-white-m"
       }
     ],
     bestSeller: true
   },
   {
     id: 4,
-    title: "Insulated Mountain Parka Jacket",
-    brand: "The North Face",
-    category: "jackets",
-    gender: "men",
-    description: "A weatherproof parka with recycled insulation, an adjustable storm hood, and sealed seams for reliable cold-weather protection.",
+    title: "Prada Ribbed Cotton Tank Top",
+    brand: "Prada",
+    category: "tops",
+    gender: "women",
+    description: "A ribbed cotton tank top with a scooped neckline and a fitted silhouette, finished with the Prada enamel triangle logo at the chest.",
     currentPrice: 189.99,
     oldPrice: 260,
     discount: 27,
@@ -236,64 +183,36 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('parka-tnf', 1),
-      img('parka-tnf', 2),
-      img('parka-tnf', 3),
-      img('parka-tnf', 4)
+      p4Img1,
+      p4Img2,
+      p4Img3
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "Black",
-        code: "#111827",
-        sku: "TNF-JAC-4-BLACK",
-        sizes: [
-          {
-            name: "M",
-            code: "M",
-            sku: "TNF-JAC-4-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-black-m"
-          },
-          {
-            name: "L",
-            code: "L",
-            sku: "TNF-JAC-4-BLACK-L",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-black-l",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-black-l"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "TNF-JAC-4-BLACK-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-black-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-black-m"
       },
       {
-        name: "Green",
-        code: "#10B981",
-        sku: "TNF-JAC-4-GREEN",
-        sizes: [
-          {
-            name: "M",
-            code: "M",
-            sku: "TNF-JAC-4-GREEN-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-green-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-green-m"
-          },
-          {
-            name: "L",
-            code: "L",
-            sku: "TNF-JAC-4-GREEN-L",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-green-l",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-green-l"
-          }
-        ]
+        name: "L",
+        code: "L",
+        sku: "TNF-JAC-4-BLACK-L",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-tnf-parka-004-black-l",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-tnf-parka-004-black-l"
       }
     ],
     bestSeller: true
   },
   {
     id: 5,
-    title: "Relaxed Fit Cargo Shorts",
-    brand: "Carhartt WIP",
-    category: "shorts",
-    gender: "men",
-    description: "Durable ripstop cargo shorts with multiple utility pockets, a reinforced waistband, and a relaxed silhouette built for everyday wear.",
+    title: "Miu Miu Cotton Bucket Hat",
+    brand: "Miu Miu",
+    category: "hats",
+    gender: "women",
+    description: "A soft cotton bucket hat in tan, featuring a wide brim and side snap detailing, with an interior Miu Miu label reading Made in Italy, 100% cotton.",
     currentPrice: 39,
     oldPrice: 52,
     discount: 25,
@@ -305,64 +224,36 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('shorts-carhartt', 1),
-      img('shorts-carhartt', 2),
-      img('shorts-carhartt', 3),
-      img('shorts-carhartt', 4)
+      p5Img1,
+      p5Img2,
+      p5Img3
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "Green",
-        code: "#10B981",
-        sku: "CW-SHO-5-GREEN",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "CW-SHO-5-GREEN-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-green-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-green-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "CW-SHO-5-GREEN-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-green-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-green-m"
-          }
-        ]
+        name: "S",
+        code: "S",
+        sku: "CW-SHO-5-GREEN-S",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-green-s",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-green-s"
       },
       {
-        name: "Black",
-        code: "#111827",
-        sku: "CW-SHO-5-BLACK",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "CW-SHO-5-BLACK-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-black-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-black-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "CW-SHO-5-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-black-m"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "CW-SHO-5-GREEN-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-carhartt-shorts-005-green-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-carhartt-shorts-005-green-m"
       }
     ],
     bestSeller: false
   },
   {
     id: 6,
-    title: "Oversized Fleece Hoodie",
-    brand: "Fear of God Essentials",
-    category: "hoodies",
+    title: "Prada Straw Boater Hat with Leather Trim",
+    brand: "Prada",
+    category: "hats",
     gender: "women",
-    description: "An oversized silhouette in heavyweight fleece with dropped shoulders and a boxy fit, finished with signature rubberized branding.",
+    description: "A wide-brim boater-style hat woven from natural straw, wrapped with a slim black leather band and gold-tone buckle, topped with the signature Prada triangle logo plate.",
     currentPrice: 98,
     oldPrice: 130,
     discount: 25,
@@ -374,53 +265,26 @@ export const products = [
     season: "All Season",
     condition: "New with Tags",
     images: [
-      img('hoodie-fog', 1),
-      img('hoodie-fog', 2),
-      img('hoodie-fog', 3),
-      img('hoodie-fog', 4)
+      p6Img1,
+      p6Img2,
+      p6Img3,
+      p6Img4
     ],
-    colors: [
+    colors: [],
+    sizes: [
       {
-        name: "Gray",
-        code: "#9CA3AF",
-        sku: "FOGE-HOO-6-GRAY",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "FOGE-HOO-6-GRAY-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-gray-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-gray-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "FOGE-HOO-6-GRAY-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-gray-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-gray-m"
-          }
-        ]
+        name: "S",
+        code: "S",
+        sku: "FOGE-HOO-6-GRAY-S",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-gray-s",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-gray-s"
       },
       {
-        name: "Black",
-        code: "#111827",
-        sku: "FOGE-HOO-6-BLACK",
-        sizes: [
-          {
-            name: "S",
-            code: "S",
-            sku: "FOGE-HOO-6-BLACK-S",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-black-s",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-black-s"
-          },
-          {
-            name: "M",
-            code: "M",
-            sku: "FOGE-HOO-6-BLACK-M",
-            ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-black-m",
-            depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-black-m"
-          }
-        ]
+        name: "M",
+        code: "M",
+        sku: "FOGE-HOO-6-GRAY-M",
+        ebayAffiliateUrl: "https://www.ebay.com/itm/aff-fog-hoodie-006-gray-m",
+        depopAffiliateUrl: "https://www.depop.com/products/aff-fog-hoodie-006-gray-m"
       }
     ],
     bestSeller: true
