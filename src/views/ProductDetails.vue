@@ -1,100 +1,115 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import Navbar from '../components/Navbar/Navbar.vue'
-import ProductGallery from '../components/ProductGallery/ProductGallery.vue'
-import ColorSelector from '../components/ColorSelector/ColorSelector.vue'
-import SizeSelector from '../components/SizeSelector/SizeSelector.vue'
-import BuyButtons from '../components/BuyButtons/BuyButtons.vue'
-import TrustBox from '../components/TrustBox/TrustBox.vue'
-import ProductTabs from '../components/ProductTabs/ProductTabs.vue'
-import RelatedProducts from '../components/RelatedProducts/RelatedProducts.vue'
-import ProductDetailsSkeleton from '../components/ProductDetailsSkeleton/ProductDetailsSkeleton.vue'
-import StateMessage from '../components/StateMessage/StateMessage.vue'
-import { fetchProductById, fetchRelatedProducts } from '../services/api.js'
+import { ref, computed, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import Navbar from "../components/Navbar/Navbar.vue";
+import ProductGallery from "../components/ProductGallery/ProductGallery.vue";
+import ColorSelector from "../components/ColorSelector/ColorSelector.vue";
+import SizeSelector from "../components/SizeSelector/SizeSelector.vue";
+import BuyButtons from "../components/BuyButtons/BuyButtons.vue";
+import TrustBox from "../components/TrustBox/TrustBox.vue";
+import ProductTabs from "../components/ProductTabs/ProductTabs.vue";
+import RelatedProducts from "../components/RelatedProducts/RelatedProducts.vue";
+import ProductDetailsSkeleton from "../components/ProductDetailsSkeleton/ProductDetailsSkeleton.vue";
+import StateMessage from "../components/StateMessage/StateMessage.vue";
+import { fetchProductById, fetchRelatedProducts } from "../services/api.js";
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const product = ref(null)
-const relatedProducts = ref([])
+const product = ref(null);
+const relatedProducts = ref([]);
 
-const isLoading = ref(true)
-const loadError = ref(null) // a genuine fetch/API failure — distinct from "not found"
-const notFound = ref(false) // the request succeeded but no such product exists
+const isLoading = ref(true);
+const loadError = ref(null); // a genuine fetch/API failure — distinct from "not found"
+const notFound = ref(false); // the request succeeded but no such product exists
 
-const selectedColor = ref(null)
-const selectedSize = ref(null)
+const selectedColor = ref(null);
+const selectedSize = ref(null);
 
 const loadProduct = async () => {
-  isLoading.value = true
-  loadError.value = null
-  notFound.value = false
-  product.value = null
-  relatedProducts.value = []
-  selectedColor.value = null
-  selectedSize.value = null
+  isLoading.value = true;
+  loadError.value = null;
+  notFound.value = false;
+  product.value = null;
+  relatedProducts.value = [];
+  selectedColor.value = null;
+  selectedSize.value = null;
 
   try {
-    const result = await fetchProductById(route.params.id)
+    const result = await fetchProductById(route.params.id);
 
     if (!result) {
-      notFound.value = true
-      return
+      notFound.value = true;
+      return;
     }
 
-    product.value = result
+    product.value = result;
 
     if (result.colors.length) {
-      selectedColor.value = result.colors[0]
+      selectedColor.value = result.colors[0];
+    } else {
+      // Colorless products keep their sizes at the top level of the
+      // product (see effectiveSizes below) — auto-select the first one,
+      // mirroring the auto-selection behavior colored products already get.
+      selectedSize.value = result.sizes?.length ? result.sizes[0] : null;
     }
 
     try {
-      relatedProducts.value = await fetchRelatedProducts(result)
+      relatedProducts.value = await fetchRelatedProducts(result);
     } catch (relatedErr) {
       // Related Products is a secondary section — if it fails to load, fail
       // quietly (empty carousel) rather than blocking the whole page.
-      console.error(relatedErr)
-      relatedProducts.value = []
+      console.error(relatedErr);
+      relatedProducts.value = [];
     }
   } catch (err) {
-    loadError.value = err.message
+    loadError.value = err.message;
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
-}
+};
 
 // Re-fetch whenever the route's product id changes (e.g. navigating between
 // products via Related Products links).
-watch(() => route.params.id, loadProduct, { immediate: true })
+watch(() => route.params.id, loadProduct, { immediate: true });
 
 // Whenever the selected color changes, reset the size to the first available
 // size of that color — never leave an invalid size selected from a previous color.
 watch(selectedColor, (newColor) => {
-  selectedSize.value = newColor && newColor.sizes.length ? newColor.sizes[0] : null
-})
+  selectedSize.value =
+    newColor && newColor.sizes.length ? newColor.sizes[0] : null;
+});
+
+// The sizes actually available to show/select: a selected color's own sizes
+// when the product has colors, otherwise the product's top-level sizes
+// (used by products that have no color variants at all).
+const effectiveSizes = computed(() => {
+  if (selectedColor.value) return selectedColor.value.sizes;
+  return product.value?.sizes ?? [];
+});
 
 const backToHome = () => {
-  router.push('/')
-}
+  router.push("/");
+};
 
 // Estimated delivery window: today + 2 days through today + 5 days,
 // computed fresh from the browser's current date every time this page
 // renders. setDate() handles month/year rollover automatically (e.g.
 // Dec 30 + 5 days correctly becomes a January date the following year).
-const formatDeliveryDate = (date) => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
+const formatDeliveryDate = (date) =>
+  date.toLocaleDateString("en-US", { month: "long", day: "numeric" });
 
 const estimatedDelivery = computed(() => {
-  const today = new Date()
+  const today = new Date();
 
-  const start = new Date(today)
-  start.setDate(start.getDate() + 2)
+  const start = new Date(today);
+  start.setDate(start.getDate() + 2);
 
-  const end = new Date(today)
-  end.setDate(end.getDate() + 5)
+  const end = new Date(today);
+  end.setDate(end.getDate() + 5);
 
-  return `${formatDeliveryDate(start)} – ${formatDeliveryDate(end)}`
-})
+  return `${formatDeliveryDate(start)} – ${formatDeliveryDate(end)}`;
+});
 </script>
 
 <template>
@@ -104,14 +119,24 @@ const estimatedDelivery = computed(() => {
     <ProductDetailsSkeleton v-if="isLoading" />
 
     <div v-else-if="loadError" class="container product-details__state-wrap">
-      <StateMessage variant="error" title="Unable to load product" :description="loadError" />
-      <button type="button" class="btn btn-primary" @click="backToHome">Back to Home</button>
+      <StateMessage
+        variant="error"
+        title="Unable to load product"
+        :description="loadError"
+      />
+      <button type="button" class="btn btn-primary" @click="backToHome">
+        Back to Home
+      </button>
     </div>
 
     <div v-else-if="notFound" class="container product-details__not-found">
       <h1>Product not found</h1>
-      <p>The product you're looking for doesn't exist or may have been removed.</p>
-      <button type="button" class="btn btn-primary" @click="backToHome">Back to Home</button>
+      <p>
+        The product you're looking for doesn't exist or may have been removed.
+      </p>
+      <button type="button" class="btn btn-primary" @click="backToHome">
+        Back to Home
+      </button>
     </div>
 
     <main v-else id="main-content" class="container product-details__main">
@@ -120,7 +145,9 @@ const estimatedDelivery = computed(() => {
         <span aria-hidden="true">/</span>
         <span>{{ product.category }}</span>
         <span aria-hidden="true">/</span>
-        <span class="product-details__breadcrumb-current">{{ product.title }}</span>
+        <span class="product-details__breadcrumb-current">{{
+          product.title
+        }}</span>
       </nav>
 
       <div class="product-details__grid">
@@ -133,17 +160,28 @@ const estimatedDelivery = computed(() => {
           <h1 class="product-details__title">{{ product.title }}</h1>
 
           <div class="product-details__price-row">
-            <span class="product-details__price">${{ product.currentPrice.toFixed(2) }}</span>
-            <span v-if="product.oldPrice" class="product-details__old-price">${{ product.oldPrice.toFixed(2) }}</span>
-            <span v-if="product.discount" class="product-details__discount">-{{ product.discount }}%</span>
+            <span class="product-details__price"
+              >${{ product.currentPrice.toFixed(2) }}</span
+            >
+            <span v-if="product.oldPrice" class="product-details__old-price"
+              >${{ product.oldPrice.toFixed(2) }}</span
+            >
+            <span v-if="product.discount" class="product-details__discount"
+              >-{{ product.discount }}%</span
+            >
           </div>
 
-          <span class="product-details__stock">USPS | Estimated delivery: {{ estimatedDelivery }}</span>
+          <span class="product-details__stock"
+            >USPS | Estimated delivery: {{ estimatedDelivery }}</span
+          >
 
           <p class="product-details__description">{{ product.description }}</p>
 
           <ColorSelector v-model="selectedColor" :colors="product.colors" />
-          <SizeSelector v-model="selectedSize" :sizes="selectedColor ? selectedColor.sizes : []" />
+          <SizeSelector
+            v-model="selectedSize"
+            :sizes="effectiveSizes"
+          />
 
           <BuyButtons :selected-size="selectedSize" />
 
@@ -153,7 +191,10 @@ const estimatedDelivery = computed(() => {
         </div>
       </div>
 
-      <RelatedProducts v-if="relatedProducts.length" :products="relatedProducts" />
+      <RelatedProducts
+        v-if="relatedProducts.length"
+        :products="relatedProducts"
+      />
     </main>
   </div>
 </template>
@@ -238,7 +279,7 @@ const estimatedDelivery = computed(() => {
 
 .product-details__discount {
   padding: 4px 10px;
-  background-color: #FDECEC;
+  background-color: #fdecec;
   color: var(--color-secondary);
   font-size: var(--fs-small);
   font-weight: var(--fw-semibold);
@@ -265,7 +306,7 @@ const estimatedDelivery = computed(() => {
 }
 
 .product-details__stock::before {
-  content: '';
+  content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -273,7 +314,7 @@ const estimatedDelivery = computed(() => {
 }
 
 .product-details__stock--out {
-  background-color: #FEF3C7;
+  background-color: #fef3c7;
   color: var(--color-warning);
 }
 
