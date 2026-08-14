@@ -156,6 +156,7 @@ const estimatedDelivery = computed(() => {
         </div>
 
         <div class="product-details__info-col">
+          <span v-if="product.bestSeller" class="product-details__bestseller">Best Seller</span>
           <span class="product-details__brand">{{ product.brand }}</span>
           <h1 class="product-details__title">{{ product.title }}</h1>
 
@@ -242,6 +243,18 @@ const estimatedDelivery = computed(() => {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+.product-details__bestseller {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 12px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-pill);
 }
 
 .product-details__brand {
