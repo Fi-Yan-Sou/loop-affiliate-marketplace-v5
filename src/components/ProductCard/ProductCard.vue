@@ -55,8 +55,6 @@ const stars = computed(() => {
         </svg>
       </button>
 
-      <span v-if="product.bestSeller" class="product-card__badge">Best Seller</span>
-      <span v-if="product.discount" class="product-card__discount">-{{ product.discount }}%</span>
     </div>
 
     <div class="product-card__body">
