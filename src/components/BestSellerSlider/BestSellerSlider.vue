@@ -19,7 +19,7 @@ const { trackRef, canScrollPrev, canScrollNext, scrollNext, scrollPrev, onPointe
     <div class="container">
       <div class="best-sellers__header section-header">
         <div>
-          <h2 id="best-sellers-heading" class="section-title">Top 10 Best Sellers</h2>
+          <h2 id="best-sellers-heading" class="section-title">Top 10 Best-Selling Products</h2>
           <p class="section-subtitle">Most purchased products this week.</p>
           <span v-if="loading" class="sr-only" role="status" aria-live="polite">Loading best sellers…</span>
         </div>
