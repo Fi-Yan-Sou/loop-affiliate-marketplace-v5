@@ -15,9 +15,7 @@ const galleryImages = [
       <div class="case-studies__text-col">
         <span class="case-studies__label">Case Studies</span>
         <h2 id="case-studies-heading" class="case-studies__title">
-          Real People.<br />
-          Real Orders.<br />
-          Real Satisfaction.
+          Last 24h Orders
         </h2>
         <p class="case-studies__paragraph">
           We love seeing our customers receive their orders safely. Every product showcased here comes from
