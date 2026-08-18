@@ -176,7 +176,7 @@ const estimatedDelivery = computed(() => {
             >USPS | Estimated delivery: {{ estimatedDelivery }}</span
           >
 
-          <p class="product-details__description">{{ product.description }}</p>
+          <!-- <p class="product-details__description">{{ product.description }}</p> -->
 
           <ColorSelector v-model="selectedColor" :colors="product.colors" />
           <SizeSelector
