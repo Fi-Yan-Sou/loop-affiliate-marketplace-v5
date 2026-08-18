@@ -156,7 +156,7 @@ const estimatedDelivery = computed(() => {
         </div>
 
         <div class="product-details__info-col">
-          <span v-if="product.bestSeller" class="product-details__bestseller">Best Seller</span>
+          <span v-if="product.bestSeller" class="product-details__bestseller">Bestseller</span>
           <span class="product-details__brand">{{ product.brand }}</span>
           <h1 class="product-details__title">{{ product.title }}</h1>
 
